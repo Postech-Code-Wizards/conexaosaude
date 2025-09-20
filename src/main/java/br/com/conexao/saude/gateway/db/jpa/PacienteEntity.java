@@ -27,7 +27,7 @@ public class PacienteEntity {
     private Long id;
 
     @Column(unique = true, nullable = false, length = 11)
-    private String cpf;
+    private String cns;
 
     @Column(nullable = false)
     private String nome;
