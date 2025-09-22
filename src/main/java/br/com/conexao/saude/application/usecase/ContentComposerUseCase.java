@@ -11,7 +11,7 @@ public class ContentComposerUseCase {
     private final ContentComposerGateway contentComposerGateway;
 
     public String execute(String prompt) {
-        return contentComposerGateway.generate(prompt);
+        return contentComposerGateway.generateMessage(prompt);
     }
 
 }
