@@ -1,21 +1,19 @@
 package br.com.conexao.saude.gateway.gemini;
 
 import br.com.conexao.saude.gateway.ContentComposerGateway;
+import com.google.genai.Client;
+import com.google.genai.types.GenerateContentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
 public class ContentComposerGeminiAdapter implements ContentComposerGateway {
+    private final Client client;
+    private static final String AI_MODEL = "gemini-2.5-flash";
 
-    @Override
-    public String generate(String recipientName) {
-
-        // todo: implementar chamada para o Gemini API
-        return UUID.randomUUID().toString();
-
+    public String generateMessage(String prompt) {
+        GenerateContentResponse response = client.models.generateContent(AI_MODEL, prompt, null);
+        return response.text();
     }
-
 }

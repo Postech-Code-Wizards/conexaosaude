@@ -23,9 +23,10 @@ public class DeliveryNotificationUseCase {
             return;
         }
 
-        String contentMessage = contentComposerUseCase.execute(notificationFrequency.toString());
-        listUserByNotificationFrequency.forEach(user ->
-                deliverySignatureNotificationUseCase.execute(user, contentMessage)
+        listUserByNotificationFrequency.forEach(user -> {
+                    String contentMessage = contentComposerUseCase.execute(user);
+                    deliverySignatureNotificationUseCase.execute(user, contentMessage);
+                }
         );
     }
 
