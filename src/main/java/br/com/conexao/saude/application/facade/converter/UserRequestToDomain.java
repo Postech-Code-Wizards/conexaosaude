@@ -14,6 +14,8 @@ public class UserRequestToDomain {
                 null,
                 userRequest.fullName(),
                 userRequest.cpf(),
+                null,
+                null,
                 userRequest.whatsappNumber(),
                 null,
                 null
