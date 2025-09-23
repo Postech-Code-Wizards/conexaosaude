@@ -18,4 +18,5 @@ public class UserUseCase {
     public User findByCpf(String cpf) {
         return userGateway.findByCpf(cpf);
     }
+
 }

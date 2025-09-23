@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserDomainToEntity {
 
-    public UserEntity convert(User user) {
+    public UserEntity execute(User user) {
         return new UserEntity(
                 user.getId(),
                 user.getFullName(),

@@ -15,7 +15,7 @@ public class SignatureDomainToEntity {
     public SignatureEntity execute(Signature signature){
         return new SignatureEntity(
                 signature.getId(),
-                userDomainToEntity.convert(signature.getUser()),
+                userDomainToEntity.execute(signature.getUser()),
                 consentDomainToEntity.execute(signature.getConsent()),
                 signature.getInterestContent(),
                 signature.getNotificationFrequency(),
