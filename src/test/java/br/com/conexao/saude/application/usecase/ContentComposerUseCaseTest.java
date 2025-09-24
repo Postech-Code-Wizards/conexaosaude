@@ -2,6 +2,7 @@ package br.com.conexao.saude.application.usecase;
 
 import br.com.conexao.saude.domain.User;
 import br.com.conexao.saude.gateway.ContentComposerGateway;
+import br.com.conexao.saude.gateway.UserInfoSUSGateway;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,9 @@ class ContentComposerUseCaseTest {
 
     @Mock
     private ContentComposerGateway contentComposerGateway;
+
+    @Mock
+    private UserInfoSUSGateway userInfoSUSGateway;
 
     @Test
     @DisplayName("Should generate a healthy eating recommendation for a SUS user")
