@@ -22,7 +22,7 @@ public class UserJpaGateway implements UserGateway {
 
     @Override
     public User save(User user) {
-        UserEntity userEntity = userDomainToEntity.convert(user);
+        UserEntity userEntity = userDomainToEntity.execute(user);
         UserEntity userEntitySaved = userRepository.save(userEntity);
         return userEntityToDomain.execute(userEntitySaved);
     }

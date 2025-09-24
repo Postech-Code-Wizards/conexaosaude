@@ -16,4 +16,5 @@ public class ContentComposerGeminiAdapter implements ContentComposerGateway {
         GenerateContentResponse response = client.models.generateContent(AI_MODEL, prompt, null);
         return response.text();
     }
+
 }

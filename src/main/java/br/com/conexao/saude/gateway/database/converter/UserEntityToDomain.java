@@ -14,8 +14,6 @@ public class UserEntityToDomain {
                 userEntity.getId(),
                 userEntity.getFullName(),
                 userEntity.getCpf(),
-                null,
-                null,
                 userEntity.getWhatsappNumber(),
                 userEntity.getCreatedAt(),
                 userEntity.getUpdatedAt());
