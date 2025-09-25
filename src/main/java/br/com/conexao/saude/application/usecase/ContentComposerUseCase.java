@@ -28,7 +28,7 @@ public class ContentComposerUseCase {
             A resposta deve estar de acordo com as políticas de saúde pública,
             evitando riscos à saúde e sempre considerando idosos.
             A resposta precisa ser em pt-br, não pode ter quebra de linha,
-            não pode ter mais de 1024 caracteres e não pode repetir a resposta anterior.
+            NÃO PODE TER MAIS DE 800 CARACTERES e não pode repetir a resposta anterior.
             """, userInformationDetails);
 
         return contentComposerGateway.generateMessage(prompt);
