@@ -4,7 +4,7 @@ volumes:
   maven_cache:
 
 networks:
-  wise_network:
+  conexao_saude_network:
     driver: "bridge"
 
 services:
@@ -22,6 +22,19 @@ services:
     ports:
         - "${POSTGRES_PORT:-5432}:5432"
     networks:
-      - wise_network
+      - conexao_saude_network
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: conexao_saude_compose
+    volumes:
+      - maven_cache:/root/.m2
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - conexao_saude_network
