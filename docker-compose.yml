@@ -1,0 +1,40 @@
+volumes:
+  postgres_data:
+    driver: "local"
+  maven_cache:
+
+networks:
+  conexao_saude_network:
+    driver: "bridge"
+
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: postgres_conexao_saude
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - TZ=${TZ:-America/Sao_Paulo}
+      - WHATSAPP_SERVICE_TOKEN:${WHATSAPP_SERVICE_TOKEN}
+      - GEMINI_SERVICE_TOKEN:${GEMINI_SERVICE_TOKEN}
+    ports:
+        - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - conexao_saude_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: conexao_saude_compose
+    volumes:
+      - maven_cache:/root/.m2
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - conexao_saude_network
