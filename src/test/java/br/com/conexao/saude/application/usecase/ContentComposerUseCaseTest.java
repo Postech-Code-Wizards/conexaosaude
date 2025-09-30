@@ -34,6 +34,7 @@ class ContentComposerUseCaseTest {
         String expectedMessage = "Recomendação de alimentação saudável";
 
         when(contentComposerGateway.generateMessage(org.mockito.ArgumentMatchers.anyString())).thenReturn(expectedMessage);
+        when(userInfoSUSGateway.findByCpf(user.getCpf())).thenReturn(java.util.Optional.empty());
 
         String actualMessage = contentComposerUseCase.execute(user);
 
